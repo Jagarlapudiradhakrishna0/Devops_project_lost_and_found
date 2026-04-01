@@ -1,0 +1,27 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main, master, deploy]
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to Production
+      run: |
+        echo "🚀 Deployment triggered for commit: ${{ github.sha }}"
+        echo "🌿 Branch: ${{ github.ref }}"
+        
+        # Add your deployment script here
+        # Example: heroku deploy, docker push, AWS deployment, etc.
+        
+        echo "✅ Deployment script execution completed"
+    
+    - name: Notify Deployment Success
+      run: echo "🎉 Deployment successful!"
