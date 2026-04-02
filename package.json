@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "description": "Smart Digital Lost & Found System for College Campuses",
   "private": true,
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
   "scripts": {
+    "postinstall": "cd backend && npm install",
     "start": "node backend/server.js",
     "start:backend": "cd backend && node server.js",
     "start:frontend": "cd frontend && npm start",
     "backend:dev": "cd backend && npm run dev",
     "frontend:dev": "cd frontend && npm start",
     "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "echo 'Build complete'",
     "status": "echo 'Backend: http://localhost:5000' && echo 'Frontend: http://localhost:3002'"
   },
   "keywords": ["lost-and-found", "college", "smart-matching"],

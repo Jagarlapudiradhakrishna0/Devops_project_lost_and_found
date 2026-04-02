@@ -1,0 +1,6 @@
+[build]
+cmds = ["cd backend && npm install"]
+start = "node backend/server.js"
+
+[nixpacks.buildImage]
+pkgs = ["nodejs"];
