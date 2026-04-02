@@ -8,8 +8,7 @@
     "start:frontend": "cd frontend && npm start",
     "backend:dev": "cd backend && npm run dev",
     "frontend:dev": "cd frontend && npm start",
-    "install:all": "cd backend && npm install && cd ../frontend && npm install",
-    "status": "echo 'Backend: http://localhost:5000' && echo 'Frontend: http://localhost:3002'"
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
   },
   "keywords": ["lost-and-found", "college", "smart-matching"],
   "author": "",
