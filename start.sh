@@ -1,4 +1,4 @@
 #!/bin/bash
 cd backend
 npm install
-cd ..
+node server.js
