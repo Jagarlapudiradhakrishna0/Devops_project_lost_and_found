@@ -1,1 +1,1 @@
-web: sh start.sh
+web: cd backend && npm install && node server.js
