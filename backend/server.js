@@ -24,10 +24,18 @@ connectDB();
 
 // Middleware - CORS must be before routes
 app.use(cors({
-  origin: 'https://lost2found.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: [
+    'https://lost2found.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5000'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
+
+// Explicit preflight handler (VERY IMPORTANT)
+app.options('*', cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
