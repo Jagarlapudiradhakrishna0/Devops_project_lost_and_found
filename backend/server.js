@@ -159,9 +159,4 @@ server.listen(PORT, () => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
-  console.log(`🗄️  MongoDB connected to: ${process.env.MONGODB_URI}`);
-});
-
 module.exports = { app, io };
