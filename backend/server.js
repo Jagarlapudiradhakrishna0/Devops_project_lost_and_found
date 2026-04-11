@@ -13,7 +13,10 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'https://lost2found.vercel.app',
+    origin: [
+      'https://lostandfound-6j9uvuqyh-radha-krishnas-projects-9a2e031d.vercel.app',
+      'https://lost2found.vercel.app'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
   },
@@ -25,6 +28,7 @@ connectDB();
 // Middleware - CORS must be before routes
 app.use(cors({
   origin: [
+    'https://lostandfound-6j9uvuqyh-radha-krishnas-projects-9a2e031d.vercel.app',
     'https://lost2found.vercel.app',
     'http://localhost:3000',
     'http://localhost:5000'
