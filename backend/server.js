@@ -13,15 +13,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: (origin, callback) => {
-      if (!origin || origin.includes('vercel.app') || origin.includes('localhost')) {
-        callback(null, true);
-      } else {
-        callback(new Error('CORS blocked'));
-      }
-    },
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    credentials: false
   },
 });
 
@@ -35,29 +29,14 @@ const corsOptions = {
       'http://localhost:3000',
       'http://localhost:5000',
     ];
-    
-    // Always allow if no origin (same-origin requests) or if in allowed list
-    if (!origin || allowedOrigins.includes(origin) || origin?.includes('vercel.app')) {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS blocked'));
-    }
-  },
+app.use(cors({
+  origin: "*",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-};
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
-app.use(cors(corsOptions));
-
-// Explicit preflight handler (VERY IMPORTANT) - use same corsOptions
-app.options('*', cors(corsOptions));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(fileUpload({ useTempFiles: true }));
-
-// Serve uploaded files
+// Explicit preflight handler
+app.options('*', cors(
 const path = require('path');
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
