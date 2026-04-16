@@ -6,6 +6,21 @@
 [![React](https://img.shields.io/badge/React-v18.0+-blue)](https://react.dev/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-v5.0+-green)](https://www.mongodb.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v3.3+-38B2AC)](https://tailwindcss.com/)
+[![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7)](https://render.com/)
+
+---
+
+## 🌐 Live Application
+
+**Production URL:** https://lostandfound-1vzs.onrender.com/
+
+- ✅ **Frontend:** Deployed on Render (React)
+- ✅ **Backend API:** https://lostandfound-1vzs.onrender.com (Express)
+- ✅ **Database:** MongoDB Atlas (Cloud)
+- ✅ **Real-time:** Socket.io enabled
+- ✅ **Storage:** Cloudinary integration for images
+
+---
 
 ## 🌟 Features
 
@@ -20,11 +35,11 @@
 
 ### Technical Features
 - 🔐 **JWT Authentication** - Secure token-based authentication
-- 🔔 **Socket.io** - Real-time messaging and live notifications
+- 🔔 **Socket.io** - Real-time messaging and notifications
+- 🌍 **Full-Stack MERN** - MongoDB, Express, React, Node.js
 - 📸 **Image Upload** - Cloudinary integration for item photos
-- 📱 **Responsive Design** - Mobile-first approach, works on all devices
-- 🎨 **Modern UI** - Beautiful dark theme with Tailwind CSS and animations
-- ⚡ **Optimized Performance** - Fast load times with efficient data handling
+- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
+- ⚡ **Production Ready** - Deployed on Render with MongoDB Atlas
 
 ---
 
@@ -33,45 +48,44 @@
 ```
 lost-and-found/
 ├── backend/                    # Node.js/Express API
-│   ├── config/                # Configurations (DB, Cloudinary)
+│   ├── config/                # Database & service configs
 │   ├── controllers/           # Business logic
-│   ├── middleware/            # Auth, error handling
-│   ├── models/                # MongoDB schemas
-│   ├── routes/                # API endpoints
-│   ├── utils/                 # Helper functions
-│   ├── server.js              # Entry point
-│   ├── Dockerfile             # Docker configuration
+│   ├── middleware/            # Auth, CORS, error handling
+│   ├── models/                # MongoDB schemas (User, Item, Match)
+│   ├── routes/                # REST API endpoints
+│   ├── server.js              # Express server
 │   └── package.json
 │
 ├── frontend/                   # React application
 │   ├── src/
 │   │   ├── components/        # Reusable UI components
-│   │   ├── pages/             # Page components
-│   │   ├── hooks/             # Custom React hooks
-│   │   ├── utils/             # API and utility functions
+│   │   ├── pages/             # Page components (Home, Register, etc)
+│   │   ├── hooks/             # Auth context & custom hooks
+│   │   ├── utils/             # API client & animations
 │   │   ├── App.jsx            # Main app component
-│   │   └── index.jsx          # Entry point
-│   ├── Dockerfile             # Docker configuration
-│   ├── tailwind.config.js     # Tailwind configuration
+│   │   └── index.jsx          # React entry point
+│   ├── .env.development       # Local development config
+│   ├── .env.production        # Production config (Render)
 │   └── package.json
 │
-├── package.json               # Root dependencies
+├── package.json               # Root build scripts
+├── Procfile                   # Render deployment config
+├── render.yaml                # Render service definition
 └── README.md                  # This file
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Local Development)
 
 ### Prerequisites
-- Node.js v18+ 
+- Node.js v18+
 - npm or yarn
-- MongoDB Atlas account (free tier: https://www.mongodb.com/cloud/atlas)
-- Cloudinary account (optional, for image uploads): https://cloudinary.com
+- MongoDB Atlas (free tier): https://www.mongodb.com/cloud/atlas
 
-### Local Development
+### Installation
 
-**1. Clone the repository:**
+**1. Clone repository:**
 ```bash
 git clone https://github.com/Jagarlapudiradhakrishna0/Devops_project_lost_and_found.git
 cd Devops_project_lost_and_found
@@ -79,288 +93,100 @@ cd Devops_project_lost_and_found
 
 **2. Install dependencies:**
 ```bash
-# Root directory
-npm install
-
-# Backend
-cd backend
-npm install
-
-# Frontend
-cd ../frontend
-npm install
+npm run install-all
 ```
 
-**3. Configure environment variables:**
+**3. Set up environment variables:**
 
-Create `.env` file in `backend/` directory:
+**Backend** (`backend/.env`):
 ```
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/lost-and-found
-JWT_SECRET=your_super_secret_jwt_key_here
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/lost-and-found
+JWT_SECRET=your_secret_key_here
+NODE_ENV=production
 PORT=5000
-NODE_ENV=development
-CLIENT_URL=http://localhost:3000
-
-# Cloudinary (optional)
-CLOUDINARY_NAME=your_cloudinary_name
-CLOUDINARY_KEY=your_cloudinary_api_key
-CLOUDINARY_SECRET=your_cloudinary_api_secret
 ```
 
-Create `.env` file in `frontend/` directory:
+**Frontend** (`frontend/.env.development`):
 ```
 REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_SOCKET_URL=http://localhost:5000
 ```
 
 **4. Start development servers:**
-
-Terminal 1 - Backend:
 ```bash
-cd backend
-npm run dev
+# Terminal 1 - Backend
+cd backend && npm run dev
+
+# Terminal 2 - Frontend
+cd frontend && npm start
 ```
 
-Terminal 2 - Frontend:
-```bash
-cd frontend
-npm start
-```
-
-Access the app at: **http://localhost:3000**
+Access at: **http://localhost:3000**
 
 ---
 
-## 📦 Deployment
+## 📋 API Endpoints
 
-### 🌐 Deployment Stack: Render (Backend) + Vercel (Frontend) + MongoDB Atlas
-
-This guide covers deploying the Lost & Found application using the recommended production-grade stack:
-- **Backend:** Render (Node.js/Express)
-- **Frontend:** Vercel (React)
-- **Database:** MongoDB Atlas (Cloud MongoDB)
-
----
-
-### Step 1: Set Up MongoDB Atlas (Database)
-
-**1.1 Create MongoDB Atlas Account:**
-- Go to https://www.mongodb.com/cloud/atlas
-- Sign up/Login with GitHub (recommended)
-- Create a new organization or use existing one
-
-**1.2 Create a Cluster:**
-- Click **+ Create a Deployment**
-- Choose **M0 Sandbox** (free tier) or higher
-- Select your preferred region (choose one closest to your users)
-- Click **Create Deployment**
-- Choose **Security Quickstart**
-  - Create a database user (save username & password)
-  - Add your IP address (or use 0.0.0.0 for development)
-  - Click **Finish & Close**
-
-**1.3 Get Connection String:**
-- Click **Databases** → Your cluster
-- Click **Connect** button
-- Select **Drivers**
-- Choose **Node.js** and version **4.0 or later**
-- Copy the connection string: `mongodb+srv://username:password@cluster.mongodb.net/myFirstDatabase`
-- Replace `myFirstDatabase` with: `lost-and-found`
-- Replace `username` and `password` with your created user credentials
-- Save this connection string securely
-
-**Connection String Format:**
-```
-mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/lost-and-found?retryWrites=true&w=majority
-```
-
----
-
-### Step 2: Deploy Backend to Render
-
-**2.1 Prepare Backend:**
-- Ensure your backend has a `server.js` file in the `backend/` directory
-- Verify `package.json` has a valid `start` script:
-```json
-"scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js"
-}
-```
-
-**2.2 Create Render Account & Deploy:**
-- Go to https://render.com
-- Sign up with GitHub
-- Click **New +** → **Web Service**
-- Connect your GitHub repository
-- Configure the service:
-  - **Name:** `lost-found-api` (or your preferred name)
-  - **Root Directory:** `backend/`
-  - **Environment:** `Node`
-  - **Build Command:** `npm install`
-  - **Start Command:** `npm start`
-  - **Instance Type:** Free (or Starter+ for production)
-
-**2.3 Set Environment Variables in Render:**
-- In your Render service dashboard, go to **Environment**
-- Add the following environment variables:
-```
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/lost-and-found?retryWrites=true&w=majority
-JWT_SECRET=your_super_secure_jwt_secret_key_minimum_32_characters
-PORT=5000
-NODE_ENV=production
-CLIENT_URL=https://your-frontend-vercel-url.vercel.app
-CLOUDINARY_NAME=your_cloudinary_name
-CLOUDINARY_KEY=your_cloudinary_api_key
-CLOUDINARY_SECRET=your_cloudinary_api_secret
-```
-
-**2.4 Deploy:**
-- Click **Deploy**
-- Wait for build to complete (2-5 minutes)
-- Once deployed, note your Render URL: `https://your-app-name.onrender.com`
-
-> ⚠️ **Note:** Free Render instances spin down after 15 minutes of inactivity. For production, upgrade to a paid plan.
-
----
-
-### Step 3: Deploy Frontend to Vercel
-
-**3.1 Build Check:**
-- Ensure frontend builds successfully:
-```bash
-cd frontend
-npm run build
-```
-
-**3.2 Create Vercel Account & Deploy:**
-- Go to https://vercel.com
-- Sign up with GitHub
-- Click **Add New...** → **Project**
-- Select your repository
-- Configure the project:
-  - **Framework Preset:** React
-  - **Root Directory:** `frontend/`
-  - **Build Command:** `npm run build`
-  - **Output Directory:** `build/`
-
-**3.3 Set Environment Variables in Vercel:**
-- In Vercel project dashboard, go to **Settings** → **Environment Variables**
-- Add:
-```
-REACT_APP_API_URL=https://your-app-name.onrender.com/api
-```
-- Click **Add** after each variable
-
-**3.4 Deploy:**
-- Click **Deploy**
-- Wait for build to complete (1-3 minutes)
-- Your frontend will be live at a URL like: `https://your-project-name.vercel.app`
-
----
-
-### Step 4: Update Backend for Frontend URL
-
-**4.1 Update CORS Configuration:**
-After frontend is deployed, update backend CORS settings:
-
-In `backend/server.js` or your main Express app:
-```javascript
-const cors = require('cors');
-
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
-}));
-```
-
-In `backend/.env`:
-```
-CLIENT_URL=https://your-project-name.vercel.app
-```
-
-**4.2 Redeploy Backend:**
-- Push changes to GitHub (main branch)
-- Render will automatically detect and redeploy
-
----
-
-### 🔗 Production Links
-
-After successful deployment, you'll have these URLs:
-
-| Service | URL Format | Example |
-|---------|-----------|---------|
-| **Frontend (Vercel)** | `https://<project-name>.vercel.app` | https://lost-found-app.vercel.app |
-| **Backend API (Render)** | `https://<app-name>.onrender.com` | https://lost-found-api.onrender.com |
-| **Database (MongoDB Atlas)** | Connection String | See MongoDB Atlas dashboard |
-
-> ✅ **Yes, you should include deployment links in your README!** This helps users and collaborators understand where the live application is hosted.
-
----
-
-### 📋 Deployment Checklist
-
-- [ ] MongoDB Atlas cluster created and running
-- [ ] Backend `.env` configured with all required variables
-- [ ] Backend deployed to Render and receiving requests
-- [ ] Frontend `.env` configured with Render API URL
-- [ ] Frontend deployed to Vercel
-- [ ] CORS configured to accept Vercel frontend URL
-- [ ] Test API endpoints from Vercel frontend
-- [ ] Verify image uploads (Cloudinary) work in production
-- [ ] Check real-time features (Socket.io) work across domains
-- [ ] Monitor logs for errors in Render dashboard
-
----
-
-### 🔧 Troubleshooting Deployment
-
-**Backend won't deploy on Render:**
-- Check that `backend/package.json` has a `start` script
-- Check for build errors in Render logs
-- Verify all environment variables are set correctly
-
-**Frontend can't connect to backend:**
-- Verify `REACT_APP_API_URL` is set correctly in Vercel
-- Check CORS settings in backend
-- Ensure backend is running (check Render dashboard)
-- Check browser console for CORS errors
-
-**MongoDB Atlas connection failing:**
-- Verify connection string is correct in `MONGODB_URI`
-- Check IP whitelist in MongoDB Atlas (needed for Render IP)
-- Ensure database user credentials are correct
-- Try connecting from MongoDB Compass to verify credentials
-
-**Images not uploading:**
-- Verify Cloudinary credentials in backend
-- Check Cloudinary account has sufficient quota
-- Review Cloudinary dashboard for upload errors
-
----
-
-## 🔐 Environment Variables Reference
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `MONGODB_URI` | MongoDB connection string | `mongodb+srv://user:pass@cluster.mongodb.net/db` |
-| `JWT_SECRET` | JWT signing secret | `your-secret-key-123` |
-| `PORT` | Backend server port | `5000` |
-| `NODE_ENV` | Environment mode | `production` or `development` |
-| `CLIENT_URL` | Frontend application URL | `https://app.example.com` |
-| `CLOUDINARY_NAME` | Cloudinary account name | `your-account` |
-| `CLOUDINARY_KEY` | Cloudinary API key | `xxxxx` |
-| `CLOUDINARY_SECRET` | Cloudinary API secret | `xxxxx` |
-| `REACT_APP_API_URL` | Backend API endpoint (frontend) | `https://api.example.com` |
-
----
-
-## 📊 API Documentation
-
-### Authentication Endpoints
+### Authentication
 - `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
+- `POST /api/auth/login` - User login
 - `GET /api/auth/profile` - Get user profile
+
+### Items
+- `POST /api/lost-items` - Report lost item
+- `GET /api/lost-items` - Get all lost items
+- `POST /api/found-items` - Report found item
+- `GET /api/found-items` - Get all found items
+
+### Matches & Messaging
+- `POST /api/matches` - Create item match
+- `GET /api/matches` - Get user's matches
+- `POST /api/messages` - Send message
+- `GET /api/notifications` - Get notifications
+
+---
+
+## 🛠️ Tech Stack
+
+---
+
+## 🚀 Deployment (Render)
+
+The application is **fully deployed and live** at:
+### 🌐 https://lostandfound-1vzs.onrender.com/
+
+**Architecture:**
+- **Frontend:** React served from backend
+- **Backend:** Express.js on Render
+- **Database:** MongoDB Atlas
+- **Real-time:** Socket.io enabled
+- **Storage:** Cloudinary
+
+**Environment Variables Required:**
+```bash
+# Backend (.env)
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/lost-and-found
+JWT_SECRET=your_secret_key
+NODE_ENV=production
+
+# Frontend (.env.production)
+REACT_APP_API_URL=https://lostandfound-1vzs.onrender.com/api
+REACT_APP_SOCKET_URL=https://lostandfound-1vzs.onrender.com
+```
+
+---
+
+## 📧 Contact & Support
+
+**Project Repository:** https://github.com/Jagarlapudiradhakrishna0/Devops_project_lost_and_found
+
+**Issues & Contributions:** Feel free to open issues or submit pull requests on GitHub.
+
+---
+
+## 📄 License
+
+This project is open source and available under the ISC License.
 
 ### Lost Items
 - `GET /api/lost-items` - Get all lost items
