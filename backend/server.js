@@ -132,7 +132,6 @@ io.on('connection', (socket) => {
 });
 
 // ✅ Serve frontend build
-const path = require('path');
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // ✅ Catch-all route for React Router
