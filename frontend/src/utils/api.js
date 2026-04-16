@@ -1,5 +1,9 @@
-// Centralized API configuration - Use relative paths for all environments
-const API_URL = '/api';
+// Centralized API configuration
+// Use backend URL from environment variable or production URL
+const API_URL = process.env.REACT_APP_API_URL || 'https://lostandfound-1vzs.onrender.com/api';
+
+// Debug: Log API URL on load
+console.log('🔗 API URL:', API_URL);
 
 export const register = (data) =>
   fetch(`${API_URL}/auth/register`, {

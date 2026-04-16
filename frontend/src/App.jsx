@@ -20,8 +20,10 @@ import MyItemsPage from './pages/MyItemsPage';
 import { useAuth } from './hooks/useAuth';
 import { getNotifications } from './utils/api';
 
-// Centralized Socket configuration - Use current domain
-const SOCKET_URL = window.location.origin;
+// Centralized Socket configuration - Use backend URL
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://lostandfound-1vzs.onrender.com';
+
+console.log('🔌 Socket URL:', SOCKET_URL);
 
 const ProtectedRoute = ({ children, isAuthenticated }) => {
   return isAuthenticated ? children : <Navigate to="/login" />;
