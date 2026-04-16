@@ -1,0 +1,4 @@
+# This file helps Render properly detect code changes
+node_modules
+.git
+.gitignore
