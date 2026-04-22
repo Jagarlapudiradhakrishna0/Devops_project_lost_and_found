@@ -17,6 +17,7 @@ import MessagesPage from './pages/MessagesPage';
 import ProfilePage from './pages/ProfilePage';
 import SettingsPage from './pages/SettingsPage';
 import MyItemsPage from './pages/MyItemsPage';
+import AdminPage from './pages/AdminPage';
 import { useAuth } from './hooks/useAuth';
 import { getNotifications } from './utils/api';
 
@@ -208,6 +209,14 @@ function App() {
               element={
                 <ProtectedRoute isAuthenticated={!!user}>
                   <SettingsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute isAuthenticated={!!user}>
+                  <AdminPage />
                 </ProtectedRoute>
               }
             />
