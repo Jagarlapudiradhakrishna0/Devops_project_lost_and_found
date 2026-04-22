@@ -423,8 +423,8 @@ Services:
 
 1. **Clone Repository:**
 ```bash
-git clone https://github.com/Jagarlapudiradhakrishna0/Devops_project_lost_and_found.git
-cd Devops_project_lost_and_found
+git clone https://github.com/Jagarlapudiradhakrishna0/project_lost_and_found.git
+cd project_lost_and_found
 ```
 
 2. **Install Dependencies:**
@@ -604,7 +604,7 @@ npm run frontend:dev
 ## 📞 Support & Contact
 
 **Production Application:** https://lostandfound-1vzs.onrender.com/  
-**Repository:** https://github.com/Jagarlapudiradhakrishna0/Devops_project_lost_and_found
+**Repository:** https://github.com/Jagarlapudiradhakrishna0/project_lost_and_found
 
 For issues, bugs, or feature requests:
 - Open an issue on GitHub
