@@ -87,8 +87,8 @@ lost-and-found/
 
 **1. Clone repository:**
 ```bash
-git clone https://github.com/Jagarlapudiradhakrishna0/Devops_project_lost_and_found.git
-cd Devops_project_lost_and_found
+git clone https://github.com/Jagarlapudiradhakrishna0/project_lost_and_found.git
+cd project_lost_and_found
 ```
 
 **2. Install dependencies:**
@@ -178,7 +178,7 @@ REACT_APP_SOCKET_URL=https://lostandfound-1vzs.onrender.com
 
 ## 📧 Contact & Support
 
-**Project Repository:** https://github.com/Jagarlapudiradhakrishna0/Devops_project_lost_and_found
+**Project Repository:** https://github.com/Jagarlapudiradhakrishna0/project_lost_and_found
 
 **Issues & Contributions:** Feel free to open issues or submit pull requests on GitHub.
 
