@@ -7,7 +7,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import Toast from '../components/Toast';
 import GlassButton from '../components/GlassButton';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://lostandfound-1vzs.onrender.com';
+const API_URL = process.env.REACT_APP_API_URL || 'https://lostandfound-1vzs.onrender.com/api';
 
 export default function AdminPage() {
   const { user, token } = useAuth();
@@ -39,10 +39,10 @@ export default function AdminPage() {
       const headers = { Authorization: `Bearer ${token}` };
 
       const [statsRes, itemsRes, matchesRes, usersRes] = await Promise.all([
-        fetch(`${API_URL}/api/admin/stats`, { headers }),
-        fetch(`${API_URL}/api/admin/pending-items`, { headers }),
-        fetch(`${API_URL}/api/admin/pending-matches`, { headers }),
-        fetch(`${API_URL}/api/admin/users`, { headers }),
+        fetch(`${API_URL}/admin/stats`, { headers }),
+        fetch(`${API_URL}/admin/pending-items`, { headers }),
+        fetch(`${API_URL}/admin/pending-matches`, { headers }),
+        fetch(`${API_URL}/admin/users`, { headers }),
       ]);
 
       if (statsRes.ok) setStats(await statsRes.json());
@@ -58,7 +58,7 @@ export default function AdminPage() {
 
   const verifyItem = async (itemId, itemType) => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/verify-item`, {
+      const res = await fetch(`${API_URL}/admin/verify-item`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export default function AdminPage() {
 
   const rejectItem = async (itemId, itemType) => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/reject-item`, {
+      const res = await fetch(`${API_URL}/admin/reject-item`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export default function AdminPage() {
 
   const approveMatch = async (matchId) => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/approve-match/${matchId}`, {
+      const res = await fetch(`${API_URL}/admin/approve-match/${matchId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export default function AdminPage() {
 
   const rejectMatch = async (matchId) => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/reject-match/${matchId}`, {
+      const res = await fetch(`${API_URL}/admin/reject-match/${matchId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ export default function AdminPage() {
 
   const suspendUser = async (userId) => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/suspend-user/${userId}`, {
+      const res = await fetch(`${API_URL}/admin/suspend-user/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ export default function AdminPage() {
 
   const activateUser = async (userId) => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/activate-user/${userId}`, {
+      const res = await fetch(`${API_URL}/admin/activate-user/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
